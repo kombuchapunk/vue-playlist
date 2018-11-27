@@ -2,7 +2,7 @@
   "name": "vue-playlist",
   "version": "1.0.3",
   "description": "Simple vue component that takes an array of videos as a prop and stitches them together/plays seamlessly in a custom video player",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -63,9 +63,13 @@
   ],
   "main": "./dist/vue.common.js",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/MishaPetrov/vue-playlist/"
+    "type": "git",
+    "url": "git+https://github.com/MishaPetrov/vue-playlist.git"
   },
   "author": "Misha Petrov",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MishaPetrov/vue-playlist/issues"
+  },
+  "homepage": "https://github.com/MishaPetrov/vue-playlist#readme"
 }
