@@ -1,12 +1,12 @@
 {
-  "name": "vue-playlist",
-  "version": "1.0.3",
+  "name": "@mishka/vue-playlist",
+  "version": "1.0.4",
   "description": "Simple vue component that takes an array of videos as a prop and stitches them together/plays seamlessly in a custom video player",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name vue ./src/components/index.js",
+    "build-bundle": "vue-cli-service build --target lib --name mishka ./src/components/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -61,7 +61,7 @@
     "*.js",
     "README.md"
   ],
-  "main": "./dist/vue.common.js",
+  "main": "./dist/mishka.common.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MishaPetrov/vue-playlist.git"
