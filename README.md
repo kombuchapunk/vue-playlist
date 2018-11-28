@@ -3,6 +3,8 @@ Simple vue component that takes an array of videos as a prop and stitches them t
 
 This is currently the only working solution to seamlessly play multiple videos (stitch into one video) in a row with a single working seek bar and controls made with vanilla JS.
 
+![Player view](https://i.imgur.com/5zdIUyc.jpg)
+
 ## Description
 This simple and lightweight Vue.js component allows you to stitch multiple videos together into a one single video with interactive custom controls. It seamlessly plays videos from a given (dynamic) array and creates a single seekbar making it seem to appear as a single video.
 
