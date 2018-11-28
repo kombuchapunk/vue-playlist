@@ -1,5 +1,5 @@
 # vue-playlist
-Simple Vue.js component that takes an array of videos as a prop and stitches them together/plays seamlessly in a custom video player
+Simple vue component that takes an array of videos as a prop and stitches them together/plays seamlessly in a custom video player
 
 ## Description
 This simple and lightweight Vue.js component allows you to stitch multiple videos together into a one single video with interactive custom controls. It seamlessly plays videos from a given (dynamic) array and creates a single seekbar making it seem to appear as a single video.
@@ -11,6 +11,8 @@ To install, from your project directory run
   ```
   $ npm install vue-playlist --save
   ```
+
+
 Import the component in your main.js file
   ```
 import VuePlaylist from 'vue-playlist';
@@ -26,6 +28,11 @@ Now you can use it anywhere by simply referencing vue-playlist and passing the a
   ```
 <vue-playlist :playlist='playlist'></vue-playlist>
   ```
+
+   (!) Make sure you have Font Awesome Icons installed/included in your application for the play/pause button to display properly. You can also overright the button text/icon with simple css styles.
+
+## Styling
+
   For your convenience and the light weight vue-playlist doesn't come with any css styles. You will need to style the player and the controls to your preference.
 
   To change the width of the player, apply styling to the element with the class .player
@@ -147,3 +154,9 @@ input[type=range].slider:focus::-ms-fill-upper {
       margin: 0 auto;
 }
   ```
+
+
+##  Author
+Email: uxmishka@gmail.com
+Web: https://misha-petrov.com/
+GitHub: https://github.com/mishapetrov
