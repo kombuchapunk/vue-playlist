@@ -157,6 +157,13 @@ input[type=range].slider:focus::-ms-fill-upper {
 
 
 ##  Author
+
+Misha Petrov @ http://fictiontribe.com
+
 Email: uxmishka@gmail.com
+
 Web: https://misha-petrov.com/
+
 GitHub: https://github.com/mishapetrov
+
+
