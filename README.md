@@ -1,6 +1,8 @@
 # vue-playlist
 Simple vue component that takes an array of videos as a prop and stitches them together/plays seamlessly in a custom video player
 
+This is currently the only working solution to seamlessly play multiple videos (stitch into one video) in a row with a single working seek bar and controls made with vanilla JS.
+
 ## Description
 This simple and lightweight Vue.js component allows you to stitch multiple videos together into a one single video with interactive custom controls. It seamlessly plays videos from a given (dynamic) array and creates a single seekbar making it seem to appear as a single video.
 
@@ -165,5 +167,3 @@ Email: uxmishka@gmail.com
 Web: https://misha-petrov.com/
 
 GitHub: https://github.com/mishapetrov
-
-
