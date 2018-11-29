@@ -12,24 +12,24 @@ This simple and lightweight Vue.js component allows you to stitch multiple video
 ## Setup/Installation Requirements
 
 To install, from your project directory run
-  ```
+  ```bash
   $ npm install vue-playlist --save
   ```
 
 
 Import the component in your main.js file
-  ```
+  ```js
 import VuePlaylist from 'vue-playlist';
   ```
 Define an array of video files with this structure
-  ```
+  ```js
 playlist: [
               {bucketRef: 'YOUR_VIDEO_URL'},
               {bucketRef: 'YOUR_VIDEO_URL'}
             ]
   ```
 Now you can use it anywhere by simply referencing vue-playlist and passing the array of videos
-  ```
+  ```js
 <vue-playlist :playlist='playlist'></vue-playlist>
   ```
 
@@ -40,14 +40,14 @@ Now you can use it anywhere by simply referencing vue-playlist and passing the a
   For your convenience and the light weight vue-playlist doesn't come with any css styles. You will need to style the player and the controls to your preference.
 
   To change the width of the player, apply styling to the element with the class .player
-  ```
+  ```css
 .player {
      width: 700px;
 }
   ```
 
 Here is a simple stylesheet for you to play around with:
-  ```
+  ```css
 .player {
       max-width: 770px;
 }
