@@ -86,6 +86,7 @@ export default {
       newPlayer.src = self.playlist[i].bucketRef;
       newPlayer.load();
       videoplayers.appendChild(newPlayer);
+      document.getElementById('player' + i).volume = 1;
       self.players[i] = document.getElementById('player' + i);
       // self.players[i].addEventListener('v-on:click', self.playerButton());
     }
@@ -105,7 +106,7 @@ export default {
     // player2.src = self.playlist[self.playerIndex].bucketRef;
     // player1.load();
     // player2.load();
-    self.currentPlayer.play();
+    //self.currentPlayer.play();
 
     var seekBar = document.getElementById("seek-bar");
 
@@ -163,7 +164,17 @@ export default {
           self.checkSeekBarVideo(seekBar.value, currentVideoIndex, time);
         });
 
-        self.currentPlayer.play();
+        let playPromise = self.currentPlayer.play();;
+
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            self.currentPlayer.play()
+          })
+          .catch(error => {
+            // Auto-play was prevented
+            // Show paused UI.
+          });
+        }
       }
       else {
         console.log("end of list");
@@ -176,11 +187,31 @@ export default {
       var player = this.currentPlayer;
       if (player.paused == true) {
         // Play the video
-        player.play();
+        let playPromise = player.play();
+
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            player.play()
+          })
+          .catch(error => {
+            // Auto-play was prevented
+            // Show paused UI.
+          });
+        }
         document.getElementById('playPauseBtn').innerHTML="<i class='fa fa-pause'></i>";
       } else {
         // Pause the video
-        player.pause();
+        let playPromise = player.pause();
+
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            player.pause()
+          })
+          .catch(error => {
+            // Auto-play was prevented
+            // Show paused UI.
+          });
+        }
         document.getElementById('playPauseBtn').innerHTML="<i class='fa fa-play'></i>";
       }
     },
@@ -199,18 +230,51 @@ export default {
           // console.log('current player: ' + this.currentPlayer)
           seekBar.value = seekValue;
           this.currentPlayer.currentTime = ((this.getTotalDuration(this.playlist) * (seekValue / 100)) - this.playlist[index].timeInPlaylist[0]);
-          this.currentPlayer.play();
+
+          let playPromise = this.currentPlayer.play();
+
+          if (playPromise !== undefined) {
+            playPromise.then(_ => {
+              this.currentPlayer.play();
+            })
+            .catch(error => {
+              // Auto-play was prevented
+              // Show paused UI.
+            });
+          }
         } // Otherwise, load a different video that's in this range
         else {
           var seekTo = this.getTotalDuration(this.playlist) * (seekValue / 100);
           for (var i=0; i<this.playlist.length; i++) {
             if ((seekTo < this.playlist[i].timeInPlaylist[1]) && (seekTo > this.playlist[i].timeInPlaylist[0])) {
-              this.currentPlayer.pause();
+              let playPromise = this.currentPlayer.pause();
+
+              if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                  this.currentPlayer.pause();
+                })
+                .catch(error => {
+                  // Auto-play was prevented
+                  // Show paused UI.
+                });
+              }
               this.playerIndex = i;
               this.currentPlayer = this.players[this.playerIndex];
               this.currentPlayer.currentTime = seekTo - this.playlist[i].timeInPlaylist[0];
               this.currentPlayer.style.zIndex = this.currentZIndex++;
-              this.currentPlayer.play();
+
+              let playPromise2 = this.currentPlayer.play();
+
+              if (playPromise2 !== undefined) {
+                playPromise2.then(_ => {
+                  this.currentPlayer.play();
+                })
+                .catch(error => {
+                  // Auto-play was prevented
+                  // Show paused UI.
+                });
+              }
+
             }
           }
         }
