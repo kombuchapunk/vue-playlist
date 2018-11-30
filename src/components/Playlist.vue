@@ -171,8 +171,7 @@ export default {
             self.currentPlayer.play()
           })
           .catch(error => {
-            // Auto-play was prevented
-            // Show paused UI.
+            console.log(error);
           });
         }
       }
@@ -194,8 +193,7 @@ export default {
             player.play()
           })
           .catch(error => {
-            // Auto-play was prevented
-            // Show paused UI.
+            console.log(error);
           });
         }
         document.getElementById('playPauseBtn').innerHTML="<i class='fa fa-pause'></i>";
@@ -208,8 +206,7 @@ export default {
             player.pause()
           })
           .catch(error => {
-            // Auto-play was prevented
-            // Show paused UI.
+            console.log(error);
           });
         }
         document.getElementById('playPauseBtn').innerHTML="<i class='fa fa-play'></i>";
@@ -238,8 +235,7 @@ export default {
               this.currentPlayer.play();
             })
             .catch(error => {
-              // Auto-play was prevented
-              // Show paused UI.
+              console.log(error);
             });
           }
         } // Otherwise, load a different video that's in this range
@@ -254,8 +250,7 @@ export default {
                   this.currentPlayer.pause();
                 })
                 .catch(error => {
-                  // Auto-play was prevented
-                  // Show paused UI.
+                  console.log(error);
                 });
               }
               this.playerIndex = i;
@@ -270,8 +265,7 @@ export default {
                   this.currentPlayer.play();
                 })
                 .catch(error => {
-                  // Auto-play was prevented
-                  // Show paused UI.
+                  console.log(error);
                 });
               }
 
