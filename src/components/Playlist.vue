@@ -30,7 +30,7 @@ export default {
   },
   props: ['playlist'],
   mounted: function () {
-    console.log(this.playlist);
+    // console.log(this.playlist);
     var self = this;
     var videoplayers = document.getElementById("video-players");
     var audioplayers = document.getElementById("audio-players");
@@ -38,7 +38,7 @@ export default {
 
     // Get duration of each video
     for (let index=0; index<this.playlist.length; index++) {
-      // console.log('INDEX: ' + index);
+      // // console.log('INDEX: ' + index);
       self.playlist[index].timeInPlaylist = [];
       self.playlist[index].duration = 0;
       let audio = document.createElement('audio');
@@ -47,7 +47,7 @@ export default {
       audioplayers.appendChild(audio);
       audio.addEventListener('canplaythrough', function(e){
          videoDuration = Math.round(e.currentTarget.duration);
-         // console.log("Duration of video number " + index + ": " +
+         // // console.log("Duration of video number " + index + ": " +
          // videoDuration + " seconds");
          self.playlist[index].duration = videoDuration;
          // if (index == 0) {
@@ -70,7 +70,7 @@ export default {
         self.playlist[index].timeInPlaylist[0] = playlistLength;
         playlistLength = playlistLength + self.playlist[index].duration;
         self.playlist[index].timeInPlaylist[1] = playlistLength;
-        // console.log(self.playlist[index].timeInPlaylist);
+        // // console.log(self.playlist[index].timeInPlaylist);
       }
       if (++numOfTimes === 5) {
           window.clearInterval(keepCheckingForDuration);
@@ -98,7 +98,7 @@ export default {
       self.players[i].style.left = "0";
       self.players[i].style.position = 'absolute';
     }
-    console.log(self.players);
+    // console.log(self.players);
     self.currentPlayer = self.players[0];
     self.currentPlayer.style.zIndex = self.currentZIndex;
     // player1.src = self.playlist[self.playerIndex].bucketRef;
@@ -114,8 +114,8 @@ export default {
     self.currentPlayer.addEventListener("timeupdate", function() {
       // Calculate the slider value
       var value = (100 / self.getTotalDuration(self.playlist)) * self.currentPlayer.currentTime;
-      // console.log("Start time for this clip: " + self.playlist[self.playerIndex].timeInPlaylist[0]);
-      // console.log(value + "% / 100%");
+      // // console.log("Start time for this clip: " + self.playlist[self.playerIndex].timeInPlaylist[0]);
+      // // console.log(value + "% / 100%");
       // Update the slider value
       seekBar.value = value;
     });
@@ -124,7 +124,7 @@ export default {
     seekBar.addEventListener("change", function() {
       // Calculate the new time
       var time = self.currentPlayer.duration * (seekBar.value / 100);
-      // console.log('time: ' + time);
+      // // console.log('time: ' + time);
 
       var currentVideoIndex = self.playerIndex;
       self.checkSeekBarVideo(seekBar.value, currentVideoIndex, time);
@@ -149,7 +149,7 @@ export default {
         self.currentPlayer.addEventListener("timeupdate", function() {
           // Calculate the slider value
           var value = (100 / self.getTotalDuration(self.playlist)) * (self.playlist[self.playerIndex].timeInPlaylist[0] + self.currentPlayer.currentTime);
-          // console.log(value + "% / 100%")
+          // // console.log(value + "% / 100%")
           // Update the slider value
           seekBar.value = value;
         });
@@ -158,7 +158,7 @@ export default {
         seekBar.addEventListener("change", function() {
           // Calculate the new time
           var time = self.currentPlayer.duration * (seekBar.value / 100);
-          // console.log('time: ' + time);
+          // // console.log('time: ' + time);
           // Update the video time
           var currentVideoIndex = self.playerIndex;
           self.checkSeekBarVideo(seekBar.value, currentVideoIndex, time);
@@ -171,12 +171,12 @@ export default {
             self.currentPlayer.play()
           })
           .catch(error => {
-            console.log(error);
+            // console.log(error);
           });
         }
       }
       else {
-        console.log("end of list");
+        // console.log("end of list");
         this.currentPlayer = this.players[0];
         this.currentPlayer.style.zIndex = this.currentZIndex;
         this.currentPlayer.currentTime = 0;
@@ -193,7 +193,7 @@ export default {
             player.play()
           })
           .catch(error => {
-            console.log(error);
+            // console.log(error);
           });
         }
         document.getElementById('playPauseBtn').innerHTML="<i class='fa fa-pause'></i>";
@@ -206,7 +206,7 @@ export default {
             player.pause()
           })
           .catch(error => {
-            console.log(error);
+            // console.log(error);
           });
         }
         document.getElementById('playPauseBtn').innerHTML="<i class='fa fa-play'></i>";
@@ -217,14 +217,14 @@ export default {
       for (var i=0; i<playlist.length; i++) {
         duration += playlist[i].duration
       }
-      // console.log("Total duration: " + duration)
+      // // console.log("Total duration: " + duration)
       return duration
     },
     checkSeekBarVideo(seekValue, index, time) {
         var seekBar = document.getElementById('seek-bar');
         // If current seek value is in the range of this particular video, rewind/forward it
         if ((seekValue < ((this.playlist[index].timeInPlaylist[1]) / this.getTotalDuration(this.playlist))*100) && (seekValue > (this.playlist[index].timeInPlaylist[0]/ this.getTotalDuration(this.playlist))*100)) {
-          // console.log('current player: ' + this.currentPlayer)
+          // // console.log('current player: ' + this.currentPlayer)
           seekBar.value = seekValue;
           this.currentPlayer.currentTime = ((this.getTotalDuration(this.playlist) * (seekValue / 100)) - this.playlist[index].timeInPlaylist[0]);
 
@@ -235,7 +235,7 @@ export default {
               this.currentPlayer.play();
             })
             .catch(error => {
-              console.log(error);
+              // console.log(error);
             });
           }
         } // Otherwise, load a different video that's in this range
@@ -250,7 +250,7 @@ export default {
                   this.currentPlayer.pause();
                 })
                 .catch(error => {
-                  console.log(error);
+                  // console.log(error);
                 });
               }
               this.playerIndex = i;
@@ -265,7 +265,7 @@ export default {
                   this.currentPlayer.play();
                 })
                 .catch(error => {
-                  console.log(error);
+                  // console.log(error);
                 });
               }
 
